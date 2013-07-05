@@ -1,6 +1,8 @@
 import org.jboss.arquillian.graphene.enricher.findby.FindBy;
 import org.openqa.selenium.WebElement;
 
+import static org.jboss.arquillian.graphene.Graphene.guardHttp;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Wybraniec
@@ -11,12 +13,19 @@ import org.openqa.selenium.WebElement;
 
 public class HomePage {
 
-    @FindBy(css = "div.alert > a > h4")
+    @FindBy(className = "alert")
     private WebElement registerToGet3Minutes;
 
-    @FindBy(css = "div.container > div.row-fluid:nth-of-type(4) > div > a > img")
+    @FindBy(className = "alert")
     private WebElement areYouPsychicJoin;
 
+    public void registerToGet3MinutesClick(){
+        guardHttp(registerToGet3Minutes).click();
+    }
+    public void areYouPsychicJoinClick(){
+        guardHttp(areYouPsychicJoin).click();
+    }
+    //Getters
     public WebElement getAreYouPsychicJoin(){
         return areYouPsychicJoin;
     }

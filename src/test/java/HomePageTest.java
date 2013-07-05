@@ -2,8 +2,11 @@ import org.jboss.arquillian.drone.api.annotation.Drone;
 import org.jboss.arquillian.graphene.enricher.findby.FindBy;
 import org.jboss.arquillian.junit.Arquillian;
 import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
+
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created with IntelliJ IDEA.
@@ -21,5 +24,18 @@ public class HomePageTest {
     @Before
     public void beforeTests(){
 
+    }
+
+    @Test
+    public void testRegisterToGet3Minutes(){
+        browser.navigate().to("https://itcrowd.pl/vop/register");
+        homePage.registerToGet3MinutesClick();
+        assertTrue(browser.getCurrentUrl().startsWith("https://itcrowd.pl/vop/register"));
+    }
+    @Test
+    public void testAreYouPsychicJoin(){
+        browser.navigate().to("https://itcrowd.pl/vop/view/registerPsychic.jsf");
+        homePage.areYouPsychicJoinClick();
+        assertTrue(browser.getCurrentUrl().startsWith("https://itcrowd.pl/vop/view/registerPsychic.jsf"));
     }
 }
